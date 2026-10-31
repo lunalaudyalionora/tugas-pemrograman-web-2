@@ -1,5 +1,5 @@
 <x-App>
     <x-slot:title>{{ $title }}</x-slot>
 
-  <h1 class="fw-bold">Page Data Store</h1>
+    <a class="btn btn-primary" href="/store/create" role="button">Create Store</a>
 </x-App>
