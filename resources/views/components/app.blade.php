@@ -8,8 +8,9 @@
   </head>
   <body>
 {{-- page title --}}
-<div class="bg-primary py-5 text-center text-white">
-    <h1 class="fw-bold">{{ $title }}</h1>
+<div class="bg-success py-5 text-center text-white">
+  <h1 class="fw-bold">{{ $title }}</h1>
+ <p class="text-white-50 small m-0 mt-1">Data-Data UMKM • Makassar</p>
 </div>
 {{-- main app --}}
 <div class="container my-5">
