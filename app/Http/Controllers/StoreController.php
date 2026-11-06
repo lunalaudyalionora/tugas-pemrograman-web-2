@@ -15,7 +15,7 @@ class StoreController extends Controller
 
         return view('store.index', [
             'title' => 'Store',
-            'stores' => Store::all(),
+            'stores' => Store::latest()->get(),
             ]);
     }
 
@@ -33,7 +33,26 @@ class StoreController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+        'name' => 'required', 
+        'owner' => 'required',
+        'category' => 'required', 
+        'address' => 'required',
+        'omset' => 'required|numeric',
+    ],
+    [
+        'name.required' => 'Nama wajib di input',
+        'owner.required' => 'Pemilik wajib di input',
+        'category.required' => 'Kategori wajib di input',
+        'address.required' => 'Alamat wajib di input',
+        'omset.required' => 'Penghasilan wajib di input',
+        'omset.numeric' => 'Penghasilan wajib berupa angka',
+    ]
+    );
+ 
+    Store::create( $validated);
+ 
+     return redirect()->route('store.index')->with('success', 'Data berhasil ditambahkan!');
     }
 
     /**
