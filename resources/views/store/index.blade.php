@@ -35,11 +35,12 @@
                         <td>{{ $store->category }}</td>
                         <td>{{ $store->address }}</td>
                         <td>Rp {{ number_format($store->omset, 0, ',', '.') }}</td>
-                        <td>
-                            <a href="{{ route('store.show', $store->id) }}" class="btn btn-success btn-sm rounded-3">
-                                <i class="bi bi-file-earmark-text"></i> Detail
-                            </a>
-                        </td>
+                    <td>
+                        <div class="d-flex gap-1">
+                            <a href="{{ route('store.edit', $store->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="{{ route('store.show', $store->id) }}" class="btn btn-success btn-sm">Detail</a>
+    </div>
+                    </td>
                     </tr>
                     @endforeach
                 </tbody>

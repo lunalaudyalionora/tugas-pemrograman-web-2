@@ -47,12 +47,9 @@ class StoreController extends Controller
         'address.required' => 'Alamat wajib di input',
         'omset.required' => 'Penghasilan wajib di input',
         'omset.numeric' => 'Penghasilan wajib berupa angka',
-    ]
-    );
- 
+    ]);
     Store::create( $validated);
- 
-     return redirect()->route('store.index')->with('success', 'Data berhasil ditambahkan!');
+    return redirect()->route('store.index')->with('success', 'Data berhasil ditambahkan!');
     }
 
     /**
@@ -68,17 +65,37 @@ class StoreController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        return view('store.edit', ['title' => 'Edit Store']);
+    public function edit(Store $store)
+    { 
+        return view('store.edit', [
+            'title' => 'Edit Store',
+            'store' => $store,
+            ]);
+
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Store $store)
     {
-        //
+        $validated = $request->validate([
+        'name' => 'required', 
+        'owner' => 'required',
+        'category' => 'required', 
+        'address' => 'required',
+        'omset' => 'required|numeric',
+    ],
+    [
+        'name.required' => 'Nama wajib di input',
+        'owner.required' => 'Pemilik wajib di input',
+        'category.required' => 'Kategori wajib di input',
+        'address.required' => 'Alamat wajib di input',
+        'omset.required' => 'Penghasilan wajib di input',
+        'omset.numeric' => 'Penghasilan wajib berupa angka',
+    ]);
+    $store->update($validated);
+    return redirect()->route('store.index')->withSuccess('Data berhasil diubah');
     }
 
     /**
