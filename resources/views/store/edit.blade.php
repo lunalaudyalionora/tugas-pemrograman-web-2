@@ -7,8 +7,8 @@
             <p class="text-muted mb-4">Lengkapi data toko UMKM kamu di bawah ini</p>
 
         <form action="/store/{{ $store->id }}/update" method="POST">
-    @csrf
-    @method('PUT')
+        @csrf
+        @method('PUT')
                 <div class="mb-3">
                     <label class="form-label">Name Store</label>
                     <input type="text" name="name" value="{{ old('name',$store->name) }}" class="form-control rounded-3 py-2 @error('name') is-invalid @enderror" placeholder="Contoh: Toko Kue Luna">

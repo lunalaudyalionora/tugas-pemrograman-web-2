@@ -101,8 +101,9 @@ class StoreController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Store $store)
     {
-        //
+        $store->delete();
+        return to_route('store.index')->withSuccess('Data berhasil dihapus');
     }
 }

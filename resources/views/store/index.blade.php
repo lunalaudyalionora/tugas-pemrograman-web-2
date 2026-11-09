@@ -22,8 +22,8 @@
                         <th scope="col">Owner</th>
                         <th scope="col">Category</th>
                         <th scope="col">Addres</th>
-                        <th scope="col">Omset</th>
-                        <th scope="col">Action</th>
+                        <th scope="col" style="min-width: 140px; white-space: nowrap;">Omset</th>
+                        <th scope="col" style="min-width: 210px; white-space: nowrap;">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -34,11 +34,13 @@
                         <td>{{ $store->owner }}</td>
                         <td>{{ $store->category }}</td>
                         <td>{{ $store->address }}</td>
-                        <td>Rp {{ number_format($store->omset, 0, ',', '.') }}</td>
+                        <td style="white-space: nowrap;">Rp {{ number_format($store->omset, 0, ',', '.') }}</td>
                     <td>
                         <div class="d-flex gap-1">
                             <a href="{{ route('store.edit', $store->id) }}" class="btn btn-warning btn-sm">Edit</a>
                             <a href="{{ route('store.show', $store->id) }}" class="btn btn-success btn-sm">Detail</a>
+                            <a href="{{ route('store.destroy', $store->id) }}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</a>
+                        </div>
     </div>
                     </td>
                     </tr>
